@@ -49,7 +49,7 @@ export default function Textform(props) {
             else {
                   let flag = false;
                   for (let i = 0; i < paragaraph.length; i++) {
-                        if (searchWord === paragaraph[i] || searchWord.charAt(0).toUpperCase() + searchWord.slice(1) === paragaraph[i] || searchWord.charAt(0).toUpperCase() + searchWord.slice(1) === paragaraph[i]) {
+                        if (searchWord === paragaraph[i] || searchWord.charAt(0).toUpperCase() + searchWord.slice(1) === paragaraph[i] || searchWord.toUpperCase() === paragaraph[i] || searchWord.charAt(0).toLowerCase() + searchWord.slice(1) === paragaraph[i] || searchWord.toLowerCase() === paragaraph[i]) {
                               paragaraph[i] = newWord;
                               flag = true;
                         }
@@ -68,7 +68,7 @@ export default function Textform(props) {
 
       return (
             <>
-                  <div className='container my-4' style={{ color: props.mode === 'dark' ? 'white' : 'black', caretColor: props.mode === 'dark' ? 'white' : 'dark' }}>
+                  <div className='container my-4' style={{ color: props.mode === 'dark' ? 'white' : 'black', caret_color: props.mode === 'dark' ? 'white' : 'dark' }}>
                         <h2>Enter the text to analysis</h2>
                         <label className="me-2 my-2" htmlFor="text_to_search">Existing word</label>
                         <br />
