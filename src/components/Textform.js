@@ -112,13 +112,13 @@ export default function Textform(props) {
                         <button class="btn mx-1 dropdown-toggle" style={bg1} type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                               Take Action
                         </button>
-                        <ul className="dropdown-menu" style={bg3} aria-labelledby="dropdownMenuButton2">
+                        <ul className="dropdown-menu " style={bg3} aria-labelledby="dropdownMenuButton2">
 
-                              <button type="button" className="btn btn-primary mx-1" style={bg1} onClick={handleUpClick}>Convert to uppercase</button>
-                              <button type="button" className="btn btn-primary mx-1" style={bg1} onClick={handleLowerClick}>Convert to lowercase</button>
-                              <button type="button" className="btn btn-primary mx-1" style={bg1} onClick={handleClearClick}>Clear text</button>
-                              <button type="button" className="btn btn-primary mx-1" style={bg1} onClick={handleCopy}>Copy text</button>
-                              <button type="button" className="btn btn-primary mx-1" style={bg1} onClick={handleExtraSpace}>Remove extra space</button>
+                              <button type="button" className="btn btn-primary btn-sm mx-1" style={bg1} onClick={handleUpClick}>Convert to uppercase</button>
+                              <button type="button" className="btn btn-primary btn-sm mx-1" style={bg1} onClick={handleLowerClick}>Convert to lowercase</button>
+                              <button type="button" className="btn btn-primary btn-sm mx-1 my-1" style={bg1} onClick={handleClearClick}>Clear text</button>
+                              <button type="button" className="btn btn-primary btn-sm mx-1 my-1" style={bg1} onClick={handleCopy}>Copy text</button>
+                              <button type="button" className="btn btn-primary btn-sm mx-1 my-1" style={bg1} onClick={handleExtraSpace}>Remove extra space</button>
                         </ul>
                         {/* <div class="dropdown"> */}
                         <button className="btn mx-1 dropdown-toggle" style={bg1} type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
