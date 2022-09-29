@@ -39,48 +39,19 @@ export default function Textform(props) {
             props.showAlert("text has been copied", "Success");
 
       }
-      const handleWordReplace = () => {
-            let paragaraph = text.split(" ");
+
+      const replaceWord = () => {
             let searchWord = document.getElementById("text_to_replace").value;
             let newWord = document.getElementById("text_to_add").value;
-            if (searchWord === "" || newWord === "") {
-                  props.showAlert("please enter a valid word", "Failure");
+            const regexp = new RegExp(searchWord, 'ig')
+            let pos = text.search(regexp)
+            if (pos === -1) {
+                  props.showAlert("Word is not found in text", "Failure");
+                  return;
             }
-            else {
-                  let flag = false;
-                  for (let i = 0; i < paragaraph.length; i++) {
-                        if (searchWord === paragaraph[i] || searchWord.charAt(0).toUpperCase() + searchWord.slice(1) === paragaraph[i] || searchWord.toUpperCase() === paragaraph[i] || searchWord.charAt(0).toLowerCase() + searchWord.slice(1) === paragaraph[i] || searchWord.toLowerCase() === paragaraph[i]) {
-                              paragaraph[i] = newWord;
-                              flag = true;
-                        }
-                        else {
-                              let n = paragaraph[i].length;
-                              let m = searchWord.length;
-                              if (m > n) {
-                                    continue;
-                              }
-                              let temp = true;
-                              for (let j = 0; j < m; j++) {
-                                    if (paragaraph[i][j] !== searchWord[j]) {
-                                          temp = false;
-                                    }
-                              }
-                              if (temp === true) {
-                                    paragaraph[i] = newWord + paragaraph[i].substring(m, n);
-                                    flag = true;
-                              }
-
-                        }
-
-                  }
-                  if (flag === false) {
-                        props.showAlert("Word is not found in text", "Failure");
-                  }
-                  else {
-                        setText(paragaraph.join(" "));
-                        props.showAlert("word is replaced successfully", "Success");
-                  }
-            }
+            const result = text.replaceAll(regexp, newWord);
+            setText(result);
+            props.showAlert("word is replaced successfully", "Success");
 
       }
       const bg1 = {
@@ -132,7 +103,7 @@ export default function Textform(props) {
                               <li><label className="text-light" htmlFor="text_to_search">New Word</label></li>
 
                               <li><input type="text" id="text_to_add"></input></li>
-                              <li className='text-center'><button type="button" className="btn btn-sm mt-1" style={{ backgroundColor: '#FF7F50', color: 'white', width: '100px' }} onClick={handleWordReplace}>Replace</button></li>
+                              <li className='text-center'><button type="button" className="btn btn-sm mt-1" style={{ backgroundColor: '#FF7F50', color: 'white', width: '100px' }} onClick={replaceWord}>Replace</button></li>
                         </ul>
                         {/* </div> */}
                   </div>
