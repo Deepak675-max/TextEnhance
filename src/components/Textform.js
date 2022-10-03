@@ -43,6 +43,9 @@ export default function Textform(props) {
       const replaceWord = () => {
             let searchWord = document.getElementById("text_to_replace").value;
             let newWord = document.getElementById("text_to_add").value;
+            if (searchWord === "" || newWord === "") {
+                  props.showAlert("Word is not found in text", "Failure");
+            }
             const regexp = new RegExp(searchWord, 'ig')
             let pos = text.search(regexp)
             if (pos === -1) {
@@ -66,6 +69,49 @@ export default function Textform(props) {
             backgroundColor: props.mode === 'dark' ? '#410F44' : 'white',
             color: 'white'
       }
+      const transformText = (family) => {
+            // transform: 'translateX(-100%)',
+            let textValue = document.getElementById("myBox");
+            if (family === "serif")
+                  textValue.style.fontFamily = "serif";
+            else if (family === "sans-serif")
+                  textValue.style.fontFamily = "sans-serif";
+            else if (family === "cursive")
+                  textValue.style.fontFamily = "cursive";
+            else if (family === "fantasy")
+                  textValue.style.fontFamily = "fantasy";
+            else
+                  textValue.style.fontFamily = "monospace";
+
+
+      }
+      // function selectHTML() {
+      //       try {
+      //             if (window.ActiveXObject) {
+      //                   var c = document.selection.createRange();
+      //                   return c.htmlText;
+      //             }
+
+      //             var nNd = document.createElement("span");
+      //             var w = getSelection().getRangeAt(0);
+      //             w.surroundContents(nNd);
+      //             return nNd.innerHTML;
+      //       } catch (e) {
+      //             if (window.ActiveXObject) {
+      //                   return document.selection.createRange();
+      //             } else {
+      //                   return getSelection();
+      //             }
+      //       }
+      // }
+
+      // $(function () {
+      //       $('#change_color').onClick(function () {
+      //             var mytext = selectHTML();
+      //             $('span').css({ "color": "red" });
+      //       });
+      // });
+
 
       return (
             <>
@@ -106,6 +152,20 @@ export default function Textform(props) {
                               <li className='text-center'><button type="button" className="btn btn-sm mt-1" style={{ backgroundColor: '#FF7F50', color: 'white', width: '100px' }} onClick={replaceWord}>Replace</button></li>
                         </ul>
                         {/* </div> */}
+                        <button class="btn mx-1 dropdown-toggle" style={bg1} type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                              font style
+                        </button>
+                        <ul className="dropdown-menu " style={bg3} aria-labelledby="dropdownMenuButton2">
+
+                              <button type="button" className="btn btn-primary btn-sm mx-1" style={bg1} onClick={() => transformText("serif")}>serif</button>
+                              <button type="button" className="btn btn-primary btn-sm mx-1" style={bg1} onClick={() => transformText("sans-serif")}>sans-serif</button>
+                              <button type="button" className="btn btn-primary btn-sm mx-1 my-1" style={bg1} onClick={() => transformText("cursive")}>cursive</button>
+                              <button type="button" className="btn btn-primary btn-sm mx-1 my-1" style={bg1} onClick={() => transformText("fantasy")}>fantasy</button>
+                              <button type="button" className="btn btn-primary btn-sm mx-1 my-1" style={bg1} onClick={() => transformText("monospace")}>monospace</button>
+                        </ul>
+                        {/* <button type="button" id="change_color" className="btn btn-primary btn-sm mx-1 my-1" style={bg1}>change color</button> */}
+
+
                   </div>
                   <div className="container" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
                         <h1>Your Text Summary here</h1>
