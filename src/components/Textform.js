@@ -152,7 +152,7 @@ export default function Textform(props) {
                               <li className='text-center'><button type="button" className="btn btn-sm mt-1" style={{ backgroundColor: '#FF7F50', color: 'white', width: '100px' }} onClick={replaceWord}>Replace</button></li>
                         </ul>
                         {/* </div> */}
-                        <button class="btn mx-1 dropdown-toggle" style={bg1} type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn mx-1 my-1 dropdown-toggle" style={bg1} type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                               font style
                         </button>
                         <ul className="dropdown-menu " style={bg3} aria-labelledby="dropdownMenuButton2">
